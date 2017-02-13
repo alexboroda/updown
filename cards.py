@@ -4,8 +4,11 @@ from random import randint
 suits = ['hearts', 'diamonds', 'spades', 'clubs']
 colors = ['red', 'black']
 values=['1','2','3','4','5','6','7','8','9','10','jack', 'queen','king','ace']
+picked = []
+
 
 deck = []
+your_cards = []
 
 for card in range(0,51):
         for suit in suits:
@@ -14,7 +17,22 @@ for card in range(0,51):
                                 deck.append({'color' : '%s' % color, 
                                       'suit' : '%s' % suit,
                                       'value' : '%s' % value})
-#print deck
-
 #pick a random card
-print deck[randint(0,52)]
+your_color = raw_input("Pick a color: ")
+your_cards.append(deck[randint(0,52)])
+if your_color != your_cards[0]['color']:
+        print "drink"
+else:
+        print "give a drink"
+
+your_value = raw_input("High or low? ")
+your_cards.append(deck[randint(0,52)])
+
+print your_cards
+
+if your_value == 'high':
+        if your_cards[1]['value'] > your_cards[0]['value']:
+                print "give a drink"
+else:
+         if your_cards[1]['value'] < your_cards[0]['value']:
+                print "give a drink"
